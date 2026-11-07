@@ -75,6 +75,9 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 // scroll reveal FIRST — must work even if WebGL/3D fails
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// belt & braces: manual viewport check — works even if IntersectionObserver is unavailable
+function forceReveal(){document.querySelectorAll('.reveal:not(.in)').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight-40&&r.bottom>40)el.classList.add('in')})}
+addEventListener('scroll',forceReveal,{passive:true});addEventListener('resize',forceReveal);forceReveal();
 document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
 const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
 c.style.transform=`translateY(-6px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`});
