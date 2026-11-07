@@ -4,7 +4,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 *{margin:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:#07070f;color:#eef0ff;overflow-x:hidden}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:radial-gradient(1200px 600px at 70% -10%,rgba(124,108,255,.25),transparent 60%),radial-gradient(900px 500px at 10% 30%,rgba(79,209,255,.15),transparent 55%),#07070f;color:#eef0ff;overflow-x:hidden}
 canvas#bg{position:fixed;inset:0;z-index:0;opacity:.85}
 .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px}
 header{position:sticky;top:0;z-index:5;backdrop-filter:blur(12px);background:rgba(7,7,15,.55);border-bottom:1px solid rgba(255,255,255,.08)}
@@ -72,8 +72,16 @@ footer a{color:#9f8fff;text-decoration:none}
 <footer>◆ Fuma Digital — built & audited by <a href="https://github.com/Fuma2514">Fuma</a> · <span id="yr"></span></footer>
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
-// 3D particle field
-const cv=document.getElementById('bg'),rd=new THREE.WebGLRenderer({canvas:cv,alpha:true}),sc=new THREE.Scene(),ca=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,100);
+// scroll reveal FIRST — must work even if WebGL/3D fails
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
+const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+c.style.transform=`translateY(-6px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`});
+c.addEventListener('mouseleave',()=>c.style.transform='')});
+// 3D particle field — optional enhancement, never blocks the page
+try{
+const cv=document.getElementById('bg'),rd=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true}),sc=new THREE.Scene(),ca=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,100);
 ca.position.z=18;rd.setSize(innerWidth,innerHeight);
 const geo=new THREE.BufferGeometry(),N=900,pos=new Float32Array(N*3);
 for(let i=0;i<N*3;i++)pos[i]=(Math.random()-.5)*46;
@@ -85,12 +93,5 @@ pts2.rotation.x=.6;sc.add(pts2);
 let mx=0,my=0;addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5);my=(e.clientY/innerHeight-.5)});
 addEventListener('resize',()=>{ca.aspect=innerWidth/innerHeight;ca.updateProjectionMatrix();rd.setSize(innerWidth,innerHeight)});
 (function loop(t){requestAnimationFrame(loop);pts.rotation.y=t*.00012+mx*.4;pts.rotation.x=my*.25;pts2.rotation.y=-t*.00008-mx*.3;rd.render(sc,ca)})(0);
-// scroll reveal
-const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-// subtle card tilt
-document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
-const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-c.style.transform=`translateY(-6px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`});
-c.addEventListener('mouseleave',()=>c.style.transform='')});
-</script></body></html>
+}catch(e){/* WebGL unavailable: gradient fallback stays, page fully functional */}
+</script></script></body></html>
