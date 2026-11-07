@@ -111,15 +111,38 @@ addEventListener('scroll',forceReveal,{passive:true});addEventListener('resize',
 document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
 c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')})});
 try{
-const cv=document.getElementById('bg'),rd=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true}),sc=new THREE.Scene(),ca=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,100);
-ca.position.z=18;rd.setSize(innerWidth,innerHeight);
-const geo=new THREE.BufferGeometry(),N=1100,pos=new Float32Array(N*3);
-for(let i=0;i<N*3;i++)pos[i]=(Math.random()-.5)*50;
+const cv=document.getElementById('bg'),rd=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
+rd.setPixelRatio(Math.min(devicePixelRatio,2));
+const sc=new THREE.Scene(),ca=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,100);
+ca.position.z=16;rd.setSize(innerWidth,innerHeight);
+// stars
+const geo=new THREE.BufferGeometry(),N=900,pos=new Float32Array(N*3);
+for(let i=0;i<N*3;i++)pos[i]=(Math.random()-.5)*52;
 geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-const pts=new THREE.Points(geo,new THREE.PointsMaterial({color:0x9c8dff,size:.085,transparent:true,opacity:.8}));sc.add(pts);
-const pts2=new THREE.Points(geo.clone(),new THREE.PointsMaterial({color:0x59d4ff,size:.055,transparent:true,opacity:.5}));pts2.rotation.x=.6;sc.add(pts2);
+const pts=new THREE.Points(geo,new THREE.PointsMaterial({color:0x8f7dff,size:.07,transparent:true,opacity:.65}));sc.add(pts);
+// central glowing icosahedron "orbit sphere"
+const core=new THREE.Mesh(new THREE.IcosahedronGeometry(3.4,1),new THREE.MeshStandardMaterial({color:0x2a1e5c,metalness:.85,roughness:.25,flatShading:true,emissive:0x241448,emissiveIntensity:.6}));
+core.position.set(6.5,.4,0);core.scale.setScalar(innerWidth<760?.55:1);sc.add(core);
+const wire=new THREE.Mesh(new THREE.IcosahedronGeometry(4.1,1),new THREE.MeshBasicMaterial({color:0x6ee0ff,wireframe:true,transparent:true,opacity:.22}));
+wire.position.copy(core.position);wire.scale.copy(core.scale);sc.add(wire);
+const halo=new THREE.Mesh(new THREE.TorusGeometry(4.8,.02,16,120),new THREE.MeshBasicMaterial({color:0xb18cff,transparent:true,opacity:.5}));
+halo.position.copy(core.position);halo.rotation.x=1.2;halo.scale.copy(core.scale);sc.add(halo);
+const l1=new THREE.PointLight(0x7c5cff,2.2,40);l1.position.set(8,6,10);sc.add(l1);
+const l2=new THREE.PointLight(0x3fa9ff,1.6,40);l2.position.set(-6,-4,8);sc.add(l2);
+sc.add(new THREE.AmbientLight(0x222244,1.4));
 let mx=0,my=0;addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
 addEventListener('resize',()=>{ca.aspect=innerWidth/innerHeight;ca.updateProjectionMatrix();rd.setSize(innerWidth,innerHeight)});
-(function loop(t){requestAnimationFrame(loop);pts.rotation.y=t*.00012+mx*.4;pts.rotation.x=my*.25;pts2.rotation.y=-t*.00008-mx*.3;rd.render(sc,ca)})(0);
+let scrollN=0;addEventListener('scroll',()=>{scrollN=Math.min(1,scrollY/innerHeight)},{passive:true});
+(function loop(t){requestAnimationFrame(loop);
+core.rotation.y=t*.0004;core.rotation.x=Math.sin(t*.0003)*.15;
+wire.rotation.y=-t*.00025;wire.rotation.z=t*.0001;
+halo.rotation.z=t*.0004;
+const fx=mx*1.4,fy=-my*1.0;
+ca.position.x+=(fx*3-ca.position.x)*.03;
+ca.position.y+=(fy*2-ca.position.y)*.03;
+ca.lookAt(0,0,0);
+pts.rotation.y=t*.00006;
+sc.position.y=scrollN*4;
+rd.render(sc,ca)})(0);
 }catch(e){}
 </script></body></html>
