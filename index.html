@@ -1,102 +1,96 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fuma Digital — AI Assistants for Restaurants, Clinics & Stores</title>
-<meta name="description" content="We build AI chatbots and voice assistants that answer guests 24/7, book tables, take orders and qualify leads. Live in 24 hours. From $200/month.">
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fuma Digital — On-chain Audits, AI Chatbots & Automation</title>
+<meta name="description" content="Fuma Digital: smart contract auditing, AI chatbot & automation for your business. Fast delivery, transparent pricing.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#101418;--bg:#f7f6f2;--acc:#0a6cff;--acc2:#064ecb}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-header{position:sticky;top:0;background:#fffdd9;box-shadow:0 1px 8px rgba(0,0,0,.07);z-index:10}
-nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
-.logo{font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
-.logo span{color:var(--acc)}
-nav a.lnk{color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem;margin-left:20px}
-nav a.lnk:hover{color:var(--acc)}
-.cta{background:var(--acc);color:#fff!important;padding:9px 18px;border-radius:8px}
-.hero{max-width:1080px;margin:0 auto;padding:76px 24px 60px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero h1{font-size:2.7rem;line-height:1.12;letter-spacing:-.03em;font-weight:800}
-.hero h1 em{font-style:normal;color:var(--acc)}
-.hero p.lead{margin:18px 0 28px;font-size:1.12rem;color:#3c4650;max-width:520px}
-.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;text-decoration:none}
-.btn.p{background:var(--acc);color:#fff}.btn.p:hover{background:var(--acc2)}
-.btn.s{border:2px solid var(--ink);color:var(--ink);margin-left:10px}
-.trust{margin-top:22px;font-size:.85rem;color:#5a6672}
-.phone{background:#101418;border-radius:26px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.25);max-width:330px}
-.phone .scr{background:#fff;border-radius:18px;height:380px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
-.msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:.86rem}
-.b{background:#eef2f7;align-self:flex-start}.u{background:var(--acc);color:#fff;align-self:flex-end}
-.phone .cap{text-align:center;color:#9fb0c0;font-size:.75rem;margin-top:10px}
-section{max-width:1080px;margin:0 auto;padding:60px 24px}
-h2{font-size:1.9rem;letter-spacing:-.02em;margin-bottom:8px}
-.sub{color:#5a6672;margin-bottom:34px;max-width:600px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 2px 14px rgba(0,0,0,.06)}
-.card h3{font-size:1.05rem;margin-bottom:10px}
-.card p{font-size:.92rem;color:#4a5560}
-.ico{font-size:1.7rem;margin-bottom:12px}
-.demo-band{background:#101418;color:#fff;border-radius:18px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
-.demo-band h2{color:#fff}
-.demo-band a.btn{background:var(--acc);color:#fff}
-.demo-band .note{color:#9fb0c0;font-size:.9rem;margin-top:14px}
-.price{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.plan{background:#fff;border-radius:14px;padding:30px;box-shadow:0 2px 14px rgba(0,0,0,.06);display:flex;flex-direction:column}
-.plan.hot{border:2px solid var(--acc);position:relative}
-.plan .tag{position:absolute;top:-12px;left:24px;background:var(--acc);color:#fff;font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:20px}
-.plan .amt{font-size:2.1rem;font-weight:800}.plan .amt small{font-size:.9rem;font-weight:600;color:#5a6672}
-.plan ul{list-style:none;margin:18px 0 24px;flex:1}
-.plan li{padding:7px 0;font-size:.92rem;border-bottom:1px solid #f0ede6}
-.plan li:before{content:"✓ ";color:var(--acc);font-weight:700}
-.plan a{background:var(--acc);color:#fff;text-align:center;border-radius:9px;padding:12px;text-decoration:none;font-weight:700}
-footer{background:#101418;color:#9fb0c0;padding:40px 24px;text-align:center;font-size:.85rem}
-footer a{color:#fff}
-@media(max-width:860px){.hero{grid-template-columns:1fr;padding:50px 20px}.grid3,.price,.demo-band{grid-template-columns:1fr}.hero h1{font-size:2rem}nav a.lnk:not(.cta){display:none}}
+*{margin:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#07070f;color:#eef0ff;overflow-x:hidden}
+canvas#bg{position:fixed;inset:0;z-index:0;opacity:.85}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:5;backdrop-filter:blur(12px);background:rgba(7,7,15,.55);border-bottom:1px solid rgba(255,255,255,.08)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;max-width:1080px;margin:0 auto}
+.logo{font-weight:800;letter-spacing:.5px;background:linear-gradient(90deg,#7c6cff,#4fd1ff);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:1.15rem}
+nav a{color:#cfd3ff;text-decoration:none;font-size:.92rem;margin-left:18px;transition:.2s}nav a:hover{color:#fff}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.12;background:linear-gradient(120deg,#fff,#9f8fff 45%,#4fd1ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin-top:16px;font-size:clamp(1rem,2.4vw,1.25rem);color:#aab0e8;max-width:640px}
+.badge{display:inline-block;margin-bottom:18px;padding:6px 14px;border:1px solid rgba(124,108,255,.5);border-radius:99px;font-size:.8rem;color:#b9b1ff;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,108,255,.35)}50%{box-shadow:0 0 0 10px rgba(124,108,255,0)}}
+.cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{padding:13px 26px;border-radius:12px;text-decoration:none;font-weight:700;transition:.25s}
+.btn.p{background:linear-gradient(120deg,#7c6cff,#4fd1ff);color:#07070f;box-shadow:0 6px 24px rgba(94,120,255,.35)}
+.btn.p:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(94,120,255,.5)}
+.btn.s{border:1px solid rgba(255,255,255,.25);color:#eef0ff}.btn.s:hover{background:rgba(255,255,255,.08)}
+section{padding:80px 0}
+.tag{color:#8f96d8;font-size:.85rem;text-transform:uppercase;letter-spacing:2px}
+h2{font-size:clamp(1.5rem,4vw,2.2rem);margin:10px 0 26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px;transition:.3s;transform-style:preserve-3d}
+.card:hover{transform:translateY(-6px) rotateX(3deg);border-color:rgba(124,108,255,.6);box-shadow:0 16px 40px rgba(60,40,180,.25)}
+.card .price{font-size:1.7rem;font-weight:800;background:linear-gradient(90deg,#b9aaff,#6ee0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card h3{margin:8px 0 10px}.card p{color:#a8ade0;font-size:.92rem;line-height:1.55}
+.card ul{margin:12px 0 0;padding-left:16px;color:#8f96d8;font-size:.85rem;line-height:1.7}
+.reveal{opacity:0;transform:translateY(34px);transition:all .8s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.live{display:flex;gap:10px;align-items:center;background:rgba(46,255,148,.07);border:1px solid rgba(46,255,148,.35);border-radius:14px;padding:14px 18px;margin-top:16px;font-size:.92rem}
+.dot{width:9px;height:9px;border-radius:50%;background:#2eff94;animation:pulse 1.6s infinite}
+footer{padding:50px 20px;text-align:center;color:#7d84c0;font-size:.9rem;border-top:1px solid rgba(255,255,255,.08)}
+footer a{color:#9f8fff;text-decoration:none}
+@media(max-width:640px){.hero{min-height:76vh}}
 </style></head><body>
-<header><nav><div class="logo">Fuma<span>Digital</span></div>
-<div><a class="lnk" href="#services">Services</a><a class="lnk" href="#demo">Live Demo</a><a class="lnk" href="#pricing">Pricing</a><a class="lnk cta" href="#contact">Get Started</a></div></nav></header>
-<div class="hero"><div>
-<h1>Your business, answering guests <em>24/7</em> — even at 2am.</h1>
-<p class="lead">Fuma Digital builds AI assistants that book tables, handle reservations, answer menu questions and qualify leads — so you never miss a customer again. Live in 24 hours, from $200/month.</p>
-<a class="btn p" href="#demo">Try the live demo</a><a class="btn s" href="#pricing">See pricing</a>
-<div class="trust">No new software to learn · Works alongside your booking system · Cancel anytime</div>
+<canvas id="bg"></canvas>
+<header><nav><div class="logo">◆ Fuma Digital</div><div><a href="#services">Services</a><a href="#demo">Live Demo</a><a href="#contact">Contact</a></div></nav></header>
+<div class="wrap">
+<div class="hero">
+<div class="badge">⚡ Same-day delivery · Crypto-friendly</div>
+<h1>I make your business<br>talk to the future.</h1>
+<p>On-chain smart contract audits, AI chatbots that actually answer, and automation that saves you hours — delivered fast, priced honestly.</p>
+<div class="cta"><a class="btn p" href="#services">See services</a><a class="btn s" href="#demo">Try the live AI demo →</a></div>
 </div>
-<div class="phone"><div class="scr">
-<div class="msg b">Buonasera! Table for 4 this Saturday at 7pm?</div>
-<div class="msg u">Yes please, do you have vegan options?</div>
-<div class="msg b">Absolutely — vegan risotto &amp; margherita. Table for 4, Saturday 7pm noted. What name?</div>
-<div class="msg u">Rossi. See you then!</div>
-<div class="msg b">Grazie Rossi! Your table request is confirmed with our host. 🍝</div>
-</div><div class="cap">Live AI assistant — real demo below ↓</div></div></div>
-
-<section id="services"><h2>What your AI assistant does</h2><p class="sub">One assistant, trained on your business, working every channel your customers use.</p>
-<div class="grid3">
-<div class="card"><div class="ico">🍝</div><h3>Restaurants</h3><p>Takes reservations, answers menu &amp; dietary questions, hours, parking, private-party enquiries — 24/7, in any language.</p></div>
-<div class="card"><div class="ico">🦷</div><h3>Clinics</h3><p>Books appointments, answers treatment FAQs, collects patient details, reduces no-shows with automatic reminders.</p></div>
-<div class="card"><div class="ico">🛍️</div><h3>Online stores</h3><p>Order status, product questions, returns policy, size guides — deflects 70%+ of repetitive tickets.</p></div>
-</div></section>
-
-<section id="demo"><div class="demo-band">
-<div><h2>Don't take our word for it. Talk to it.</h2><p class="note">This is a fully working demo for a fictional restaurant, Bella Roma. Ask it for a table, about the menu, or dietary options — exactly what we'd deploy for you, in your brand, within 24 hours.</p>
-<a class="btn" href="https://fuma2514.github.io/bella-roma-demo/" target="_blank" rel="noopener">Try the restaurant demo →</a><div class="demo-row" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
-<a class="btn" href="https://fuma2514.github.io/bella-roma-demo/" target="_blank" rel="noopener">🍝 Restaurant demo</a>
-<a class="btn" href="https://fuma2514.github.io/brightsmile-dental/" target="_blank" rel="noopener">🦷 Dental clinic demo</a>
-<a class="btn" href="https://fuma2514.github.io/urban-threads/" target="_blank" rel="noopener">🛍️ Online store demo</a></div></div>
-<div class="phone" style="margin:auto"><div class="scr"><div class="msg b">I can book tables, share today's menu, or take your details. What can I do for you?</div><div class="msg u">Table for 2 tonight 8pm</div><div class="msg b">Table for 2 tonight 8pm noted! Name for the booking?</div></div><div class="cap">bella-roma-demo · live</div></div>
-</div></section>
-
-<section id="pricing"><h2>Simple pricing</h2><p class="sub">No setup fee on your first month. Cancel anytime. You own the assistant.</p>
-<div class="price">
-<div class="plan"><div class="amt">$200<small>/mo</small></div><ul><li>AI chatbot on your website</li><li>Reservation / FAQ flows</li><li>Menu &amp; hours training</li><li>Email support</li></ul><a href="#contact">Start with Starter</a></div>
-<div class="plan hot"><span class="tag">MOST POPULAR</span><div class="amt">$399<small>/mo</small></div><ul><li>Everything in Starter</li><li>Booking-system integration</li><li>Instagram / Facebook DM bot</li><li>Monthly performance report</li><li>Priority support</li></ul><a href="#contact">Start with Growth</a></div>
-<div class="plan"><div class="amt">Custom</div><ul><li>AI voice receptionist (answers calls)</li><li>Multi-language</li><li>CRM / POS integration</li><li>Dedicated manager</li></ul><a href="#contact">Talk to us</a></div>
-</div></section>
-
-<section id="contact"><h2>Get your assistant in 24 hours</h2><p class="sub">Tell us your website and what you want it to do. We'll send a working demo of YOUR business — free, before you pay anything.</p>
-<div class="card" style="max-width:560px">
-<p><strong>Email:</strong> <a href="mailto:lokomotifkeren@gmail.com">lokomotifkeren@gmail.com</a></p>
-<p style="margin-top:10px"><strong>WhatsApp:</strong> message us — we reply within hours.</p>
-<p style="margin-top:18px;font-size:.9rem;color:#5a6672">We reply to every enquiry personally — usually within 4 hours, always within 24.</p>
-</div></section>
-
-<footer>Fuma Digital · AI assistants for hospitality, healthcare &amp; e-commerce<br>
-Live demo: <a href="https://fuma2514.github.io/bella-roma-demo/" target="_blank" rel="noopener">bella-roma-demo</a> · <a href="mailto:lokomotifkeren@gmail.com">lokomotifkeren@gmail.com</a><br>
-© 2026 Fuma Digital. All rights reserved.</footer>
-</body></html>
+<section id="services"><div class="tag">Services</div><h2 class="reveal">Straightforward. No agencies, no bloat.</h2>
+<div class="grid">
+<div class="card reveal"><div class="price">$35</div><h3>🔗 On-chain Audit</h3><p>Manual review + adversarial testing of your smart contract. You get a clear report: findings, severity, fixes.</p><ul>24h turnaround · Fix verification included</ul></div>
+<div class="card reveal"><div class="price">$40</div><h3>🎨 Design Pack</h3><p>Landing page or product design system — modern, animated, mobile-first, ready to deploy.</p><ul>Source files included · Unlimited revisions in 48h</ul></div>
+<div class="card reveal"><div class="price">$45</div><h3>🐍 Python Automation</h3><p>Scrapers, monitors, bots, scheduled jobs. If you do it manually twice a week, I make it automatic.</p><ul>Deployed & documented · Runs on your infra</ul></div>
+<div class="card reveal"><div class="price">$50</div><h3>🤖 AI Chatbot</h3><p>A real conversational assistant for your site — trained on your menu, prices & FAQs. Live in 3 days.</p><ul>Works on any website · You own the API keys</ul></div>
+</div>
+<div class="live reveal"><span class="dot"></span><span><b>Live proof:</b> the AI chatbot below is not a mockup — it's really answering visitors right now.</span></div>
+</section>
+<section id="demo"><div class="tag">Live demo</div><h2 class="reveal">Talk to an AI I built.</h2>
+<p class="reveal" style="color:#aab0e8;max-width:620px">This is Bella Roma, a demo restaurant assistant. Ask about the menu, opening hours, or book a table — it answers in real time, in English or Indonesian.</p>
+<div class="cta reveal"><a class="btn p" href="https://fuma2514.github.io/bella-roma-demo/">Open the live demo →</a></div>
+</section>
+<section id="contact"><div class="tag">Contact</div><h2 class="reveal">Start today.</h2>
+<div class="grid">
+<div class="card reveal"><h3>📧 Email</h3><p><a style="color:#6ee0ff" href="mailto:lokomotifkeren@gmail.com">lokomotifkeren@gmail.com</a><br>Replies within hours.</p></div>
+<div class="card reveal"><h3>𝕏 Twitter / X</h3><p><a style="color:#6ee0ff" href="https://x.com/Cakweeyy" target="_blank" rel="noopener">@Cakweeyy</a><br>DM open.</p></div>
+<div class="card reveal"><h3>🐙 GitHub</h3><p><a style="color:#6ee0ff" href="https://github.com/Fuma2514" target="_blank" rel="noopener">github.com/Fuma2514</a><br>All work in the open.</p></div>
+</div>
+<p class="reveal" style="margin-top:22px;color:#8f96d8;font-size:.9rem">Payment: USDC (Base / BSC) · Bank transfer · Escrow welcome</p>
+</section>
+</div>
+<footer>◆ Fuma Digital — built & audited by <a href="https://github.com/Fuma2514">Fuma</a> · <span id="yr"></span></footer>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+// 3D particle field
+const cv=document.getElementById('bg'),rd=new THREE.WebGLRenderer({canvas:cv,alpha:true}),sc=new THREE.Scene(),ca=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,100);
+ca.position.z=18;rd.setSize(innerWidth,innerHeight);
+const geo=new THREE.BufferGeometry(),N=900,pos=new Float32Array(N*3);
+for(let i=0;i<N*3;i++)pos[i]=(Math.random()-.5)*46;
+geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+const pts=new THREE.Points(geo,new THREE.PointsMaterial({color:0x8f7dff,size:.09,transparent:true,opacity:.75}));
+sc.add(pts);
+const pts2=new THREE.Points(geo.clone(),new THREE.PointsMaterial({color:0x4fd1ff,size:.06,transparent:true,opacity:.5}));
+pts2.rotation.x=.6;sc.add(pts2);
+let mx=0,my=0;addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5);my=(e.clientY/innerHeight-.5)});
+addEventListener('resize',()=>{ca.aspect=innerWidth/innerHeight;ca.updateProjectionMatrix();rd.setSize(innerWidth,innerHeight)});
+(function loop(t){requestAnimationFrame(loop);pts.rotation.y=t*.00012+mx*.4;pts.rotation.x=my*.25;pts2.rotation.y=-t*.00008-mx*.3;rd.render(sc,ca)})(0);
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// subtle card tilt
+document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
+const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+c.style.transform=`translateY(-6px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`});
+c.addEventListener('mouseleave',()=>c.style.transform='')});
+</script></body></html>
