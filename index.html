@@ -56,10 +56,35 @@ footer{padding:56px 20px 70px;text-align:center;color:#6d73ab;font-size:.9rem;bo
 footer a{color:#a08cff;text-decoration:none}
 .reveal{opacity:0;transform:translateY(36px);transition:all .8s cubic-bezier(.2,.7,.3,1)}
 .reveal.in{opacity:1;transform:none}
+/* showcase */
+.show-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.show{position:relative;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.12);aspect-ratio:16/10;cursor:pointer;transition:transform .35s,box-shadow .35s}
+.show:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 26px 60px rgba(70,50,200,.4)}
+.show .art{position:absolute;inset:0;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.show:hover .art{transform:scale(1.07)}
+.show .art::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,6,14,.9),transparent 55%)}
+.show .meta{position:absolute;left:20px;right:20px;bottom:16px;z-index:2;display:flex;justify-content:space-between;align-items:center}
+.show .meta h3{font-family:'Space Grotesk';font-size:1.15rem}
+.show .meta span{font-size:.72rem;color:#8d93c8;border:1px solid rgba(255,255,255,.2);padding:4px 10px;border-radius:99px;backdrop-filter:blur(6px)}
+.art-a{background:radial-gradient(120% 120% at 20% 20%,#7c5cff 0%,#241b5e 45%,#0a0a1c 100%)}
+.art-b{background:radial-gradient(120% 120% at 80% 15%,#00c2ff 0%,#0e3a5e 45%,#070a18 100%)}
+.art-c{background:radial-gradient(120% 120% at 50% 90%,#ff4fd8 0%,#4d1a4e 45%,#12081a 100%)}
+.art .ring{position:absolute;border:1px solid rgba(255,255,255,.25);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.art .core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;filter:blur(2px)}
+/* cursor glow */
+#cglow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(124,92,255,.14),transparent 65%);transform:translate(-50%,-50%);left:-999px;transition:opacity .3s}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;counter-reset:st}
+.step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px;position:relative}
+.step::before{counter-increment:st;content:'0' counter(st);font-family:'Space Grotesk';font-size:2.4rem;font-weight:700;background:linear-gradient(90deg,#a08cff,#59d4ff);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.step h3{font-family:'Space Grotesk';margin:10px 0 8px;font-size:1.1rem}
+.step p{color:#a6abdc;font-size:.9rem;line-height:1.6}
+.step .d{font-size:.75rem;color:#59d4ff;margin-top:10px;font-weight:700}
 </style></head><body>
 <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
 <canvas id="bg"></canvas>
-<header><nav><div class="logo">◆ Fuma Digital</div><div class="links"><a href="#services">Services</a><a href="#demo">Live Demo</a><a href="#contact">Contact</a></div></nav></header>
+<div id="cglow"></div>
+<header><nav><div class="logo">◆ Fuma Digital</div><div class="links"><a href="#services">Services</a><a href="#work">Work</a><a href="#demo">Live Demo</a><a href="#contact">Contact</a></div></nav></header>
 <div class="wrap">
 <div class="hero">
 <span class="pill">⚡ Same-day delivery · Crypto & PayPal friendly</span>
@@ -92,6 +117,24 @@ footer a{color:#a08cff;text-decoration:none}
 <a class="btn p" href="https://fuma2514.github.io/bella-roma-demo/" target="_blank" rel="noopener">Open live demo →</a>
 </div>
 </section>
+<section id="work"><div class="tag">Selected work</div><h2 class="reveal">Things I've shipped.</h2>
+<div class="show-grid">
+<div class="show reveal" onclick="location.href='https://fuma2514.github.io/bella-roma-demo/'">
+<div class="art art-a"><div class="ring" style="width:58%;aspect-ratio:1;animation:pulse 3s infinite"></div><div class="ring" style="width:36%;aspect-ratio:1;opacity:.6"></div><div class="core" style="width:16%;aspect-ratio:1;background:#8f7dff"></div></div>
+<div class="meta"><h3>Bella Roma AI</h3><span>LIVE AI · hospitality</span></div></div>
+<div class="show reveal" onclick="location.href='https://github.com/Fuma2514/dreamdex-feedback'">
+<div class="art art-b"><div class="ring" style="width:52%;aspect-ratio:1"></div><div class="core" style="width:22%;aspect-ratio:1;background:#00c2ff;box-shadow:0 0 60px #00c2ff88"></div></div>
+<div class="meta"><h3>dreamDEX Reports</h3><span>bounty · fintech</span></div></div>
+<div class="show reveal" onclick="location.href='https://github.com/Fuma2514/payment-coroner'">
+<div class="art art-c"><div class="ring" style="width:64%;aspect-ratio:1;opacity:.5"></div><div class="core" style="width:18%;aspect-ratio:1;background:#ff4fd8;box-shadow:0 0 60px #ff4fd888"></div></div>
+<div class="meta"><h3>Payment Coroner</h3><span>hackathon · AI</span></div></div>
+</div></section>
+<section id="process"><div class="tag">Process</div><h2 class="reveal">From message to shipped — in days.</h2>
+<div class="steps">
+<div class="step reveal"><h3>Send a message</h3><p>Tell me what you need in plain words. No forms, no sales calls.</p><div class="d">DAY 0</div></div>
+<div class="step reveal"><h3>Fixed scope & price</h3><p>You get a concrete plan with a fixed price. No surprises, no hourly billing.</p><div class="d">DAY 0–1</div></div>
+<div class="step reveal"><h3>Shipped & verified</h3><p>Built, tested, deployed — with proof you can check yourself. Pay when you're satisfied.</p><div class="d">DAY 1–3</div></div>
+</div></section>
 <section id="contact"><div class="tag">Contact</div><h2 class="reveal">Start today.</h2>
 <div class="grid">
 <div class="card reveal"><h3>📧 Email</h3><p><a style="color:#59d4ff" href="mailto:lokomotifkeren@gmail.com">lokomotifkeren@gmail.com</a><br>Replies within hours.</p></div>
@@ -145,4 +188,8 @@ pts.rotation.y=t*.00006;
 sc.position.y=scrollN*4;
 rd.render(sc,ca)})(0);
 }catch(e){}
+// cursor glow
+try{const cg=document.getElementById('cglow');
+addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';cg.style.opacity='1'});
+addEventListener('mouseleave',()=>cg.style.opacity='0');}catch(e){}
 </script></body></html>
