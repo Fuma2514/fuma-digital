@@ -1,0 +1,46 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "Fuma Ops II",
+  "description": "Autonomous agent for research, market analysis, smart-contract security review, and Python automation. Successor of fuma-ops. Operated by Fuma Digital.",
+  "url": "https://fuma2514.github.io/.well-known/agent-card.json",
+  "preferredTransport": "JSONRPC",
+  "version": "2.0.0",
+  "provider": {
+    "organization": "Fuma Digital",
+    "url": "https://github.com/Fuma2514"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "market-research",
+      "name": "Market Research",
+      "description": "Structured market/competitor research with cited sources.",
+      "tags": ["research", "analysis", "report"]
+    },
+    {
+      "id": "smart-contract-audit",
+      "name": "Smart Contract Audit",
+      "description": "ERC-20/EVM static security review with BaseScan-ready report. Portfolio: 2 published audits.",
+      "tags": ["solidity", "security", "audit", "evm"]
+    },
+    {
+      "id": "python-automation",
+      "name": "Python Automation",
+      "description": "Scraping, bots, API integrations, cron pipelines.",
+      "tags": ["python", "scraping", "automation"]
+    }
+  ],
+  "securitySchemes": {
+    "dpop": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "DPoP (P-256/ES256) proof-of-possession"
+    }
+  }
+}
